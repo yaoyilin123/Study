@@ -1,0 +1,72 @@
+//9.16 学习C++
+//#include<iostream>
+//using namespace std;
+//
+//int main()
+//{
+//	cout << "hello world" << endl;
+//	system("pause");
+//
+//	return 0;
+//}
+//2.创建变量
+//#include <iostream>
+//using namespace std;
+//int main()
+//{
+//	int a = 10;
+//	cout << "a=" << a << "\nb=20" << endl;   //a的值直接打印到句尾，如果想继续打印，
+//	//那就需要再次<<并输入。
+//	system("pause");
+//
+//	return 0;
+//}
+//3.常量
+//常量的定义方式 （1）#define 宏常量  
+//  （无法修改） （2）const修饰的常量
+//#include<iostream>
+//using namespace std;
+////（1）.宏常量
+//#define day 7
+//int main()
+//{
+//	//Day=14;  Day是常量 不可修改
+//	const int b = 31;//类型（2） const修饰的常量 
+//	cout << "一周总共有" << day << "天" << endl; //cout打印出来后面自带隔行"\n"
+//	cout << "一月份总共有" << b << "天\n" << endl;
+//	system("pause");
+//
+//	return 0;
+//}
+#include <iostream>
+using namespace std;
+int main()
+{
+	//采用sizeof 计算数据类型所占的内存大小
+	//int num1 = 1;
+	//cout << "int 所占内存大小为：" << sizeof(num1)<<endl; //4
+	//long num2 = 2;
+	//cout << "long 所占内存大小为：" << sizeof(num2) << endl;//4或者8
+
+	//科学计数法
+	//float num3 = 3e2;   //3*10^2    300
+	//float num4 = 5e-2;  //5*10^-2   0.05
+	//cout << "num3=" << num3 << endl;
+	//cout << "num4=" << num4 << endl;
+
+	//字符型char
+	//1.创建类型 
+	char ch1 = 'A';
+	cout << ch1 << endl;
+	//2.常见的错误书写方式
+	//（1）应该使用单引号 （2）单引号内只能放置一个字符，不能过多
+	//3.字符变量所占内存大小
+	cout << "char 所占内存大小为：" << sizeof(char) << endl; //1个
+	//4.字符类型变量的内容，是利用ASCII值存放的
+	cout << "A在ASCII值中对应为：" << (int)ch1 << endl; //ch1为字符，前置一个int为强制类型转换，显示内容所对应的ASCII码值
+	//a为97 A为65
+	cout << (char)97 << endl; //97数字化成字符型为a
+
+	system("pause");
+	return 0;
+}
