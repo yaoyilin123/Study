@@ -149,3 +149,74 @@ int main()
 	system("pause");
 	return 0;
 }
+
+//9.18日学习 
+#include <iostream>
+using namespace std;
+
+int main(){
+	//今日1.if嵌套语句 
+    //例子，600分以上1本，500分二本，400分三本，400以下未考本科。其中大于700北大，大于650清华
+    //大于600则人大
+	/*int score = 0;
+	cout << "请输入您的分数：";
+	cin >> score;
+	cout << "您的分数为：" << score << endl;
+	if (score > 600)
+	{
+		if (score > 700)
+			cout << "恭喜您考上了北京大学！" << endl;
+		else if(score>650)
+			cout << "恭喜您考上了清华大学！" << endl;
+		else
+			cout << "恭喜您考上了人民大学！" << endl;
+	}
+	else if (score > 500)
+	{
+		cout << "恭喜您考上二本大学！" << endl;
+	}
+	else if (score > 400)
+	{
+		cout << "恭喜您考上三本大学！" << endl;
+
+	}
+	else
+	{
+		cout << "您未考上大学，请再接再厉！" << endl;
+	}*/
+
+	//今日2.练习题 三只小猪称体重，比较体重更大的
+	/*int pig1 = 1;
+	int pig2 = 2;
+	int pig3 = 3;
+	if (pig1 > pig2)
+	{
+		if(pig1>pig3)
+		{cout << "第一只小猪更重。" << endl;}
+		else
+		{cout << "第三只小猪更重。" << endl;}
+	}
+	else
+	{
+		if(pig2>pig3)
+		{cout << "第二只小猪更重。" << endl;}
+		else
+		{cout << "第三只小猪更重。" << endl; }
+	}*/
+
+	//今日3.三目操作符
+	//创建三个变量ABC，将AB作比较，将较大值赋值给C
+	//int a = 10;
+	//int b = 20;
+	//int c = 0;
+	//a > b ? c = a : c = b;//   或者c=(a>b?a:b);
+	//cout << "c=" << c << endl;
+	////注意 三目操作符的结果是冒号两端的a或b ，我们可以再次给其赋值
+	//(a > b ? a : b) = 100;
+
+
+
+	system("pause");
+	return 0;
+}
+
