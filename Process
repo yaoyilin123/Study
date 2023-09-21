@@ -369,6 +369,7 @@ int main()
 	return 0;
 }
 
+//9.20日练习
 #include <iostream>
 using namespace std;
 
@@ -424,3 +425,128 @@ int main()
 	system("pause");
 	return 0;
 }
+
+
+
+//9.21日练习
+//#include <iostream>
+//using namespace std;
+//
+//int main()
+//{
+//	//今日1.元素逆置 例如：将54231变成13245
+//	//(1).建立一个数组承载数字
+//	//int arr[] = {5,4,2,3,1};
+//	//cout << "逆置前的数字：";
+//	//for (int i = 0; i < 5; i++)
+//	//{
+//	//	cout << arr[i] << " ";
+//	//}
+//	////(2).建立循环让数字交换，需要一个中间变量。
+//	//int start = 0;
+//	//int end = sizeof(arr) / sizeof(arr[0])-1;//0-4
+//	//while (start < end)
+//	//{
+//	//	int temp = 0;
+//	//	temp = arr[start];
+//	//	arr[start] = arr[end];
+//	//	arr[end] =temp;
+//	//	start++; end--;
+//	//}
+//	//cout << endl<< "逆置后的数字：";
+//	//	for (int i = 0; i < 5; i++)
+//	//{
+//	//	cout << arr[i] << " ";
+//	//}
+//
+//	//今日2.冒泡排序
+//	//(1).建立一个乱的数组
+//	//int arr[] = { 5,6,3,4,1,2 };
+//	//int num = sizeof(arr) / sizeof(arr[0]);
+//	////(2)循环次数为num-1，每次的排序次数为num-第几次循环（从0开始）-1
+//	//for (int i =0; i < num-1; i++)
+//	//{
+//	//	for (int j=0;j<num-i-1;j++)
+//	//	{
+//	//		int temp = 0;
+//	//		if (arr[j] > arr[j + 1])
+//	//		{
+//	//			temp = arr[j];
+//	//			arr[j] = arr[j + 1];
+//	//			arr[j + 1] = temp;
+//	//		}
+//	//	}
+//	//}
+//	//for(int m = 0; m < num;m++)
+//	//{
+//	//	cout << arr[m] << " " ;
+//	//}
+//
+//	//今日3.二维数组  四种创建方式,不一一列举，列举两种。
+//	//int arr1[3][3] = 
+//	//{
+//	//	{1,2,3},
+//	//	{4,5,6}
+//	//	未赋值的位置，自动补齐0
+//	//};
+//	//for (int i = 0; i < 3; i++)
+//	//{
+//	//	for (int j = 0; j < 3; j++)
+//	//	{
+//	//		cout << arr1[i][j] << " ";
+//	//	}
+//	//	cout << endl;
+//	//}
+//	//第二种。
+//	//int arr2[][3] = { 1,2,3,4,5,6 }; //系统会自动分配行数。
+//	////可以省略行数，但是列数不可以省略！
+//
+//	system("pause");
+//	return 0;
+//}
+
+//今日4.函数,创建一个相加的函数。
+//返回数据类型 函数名称（参数列表）
+//{ 函数内容 ； return __表达式 }
+//#include <iostream>
+//using namespace std;
+//
+//int Add(int num1, int num2)
+//{
+//	int sum = num1 + num2;
+//	return sum;
+//}
+//
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	int c=Add(a, b);
+//	cout << "a和b的和为：" << c << endl;
+//	system("pause");
+//	return 0;
+//}
+
+//今日5.形参的改变不会影响实参。
+//#include <iostream>
+//using namespace std;
+//void swap(int num1, int num2)
+//{
+//	cout << "变换前num1的值：" << num1<<endl;
+//	cout << "变换前num2的值：" << num2 << endl;
+//	int temp = num1;
+//	num1 = num2;
+//	num2 = temp;
+//	cout << "变换后num1的值：" << num1 << endl;
+//	cout << "变换后num2的值：" << num2 << endl;
+//}
+//int main()
+//{
+//	int A = 10;
+//	int B = 20;
+//	swap(A, B);
+//	cout << "A=" << A << endl;
+//	cout << "B=" << B << endl;
+//	system("pause");
+//	return 0;
+//}//由此可见，实参传入函数后，形参如何变换对原始的实参都没有影响。
