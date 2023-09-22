@@ -550,3 +550,43 @@ int main()
 //	system("pause");
 //	return 0;
 //}//由此可见，实参传入函数后，形参如何变换对原始的实参都没有影响。
+
+//23.9.22日学习
+//今日最终练习 封装一个函数，利用冒泡排序，实现对整型数组的升序排序。
+#include <iostream>
+using namespace std;
+
+//冒泡排序       参数1：数组的首地址  参数2：数组的长度
+void bubbleSort(int* arr,int len)
+{
+	int* p1 = arr;
+	for (int i = 0; i < len-1; i++)
+	{
+		arr = p1;
+		for (int j = 0; j < len-1 - i; j++)
+		{
+			if (*arr > *(arr + 1))
+			{
+				int temp =*arr;
+				*arr = *(arr + 1);   //此处如果用 arr[j]=arr[j+1]也可以改变实参
+				*(arr + 1) = temp; //因为在C++中传入数组的地址后，arr[j]=*(arr+j)
+			}
+			arr++;
+		}
+	}
+}
+int main()
+{
+	int arr[10] = { 4,3,6,9,1,2,10,8,7,5 };
+	//求出数组的长度，并传入函数。
+	int len = sizeof(arr) / sizeof(arr[0]);
+	bubbleSort(arr,len);
+	for (int i = 0; i < 10; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+
+	system("pause");
+	return 0;
+}
