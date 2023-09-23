@@ -1,0 +1,119 @@
+//今日23.9.23  结构体
+//定义： struct ___（相当于自己创建的数据类型）  ___ID  { 成员列表};
+//#include <iostream>
+//using namespace std;
+//struct student
+//{
+//	string name; //成员列表内记录学生的名字 年龄 成绩
+//	int age;
+//	int score;
+//};
+//
+//void print(const student* stu)
+//{
+//	//stu->age = 0; //此时，stu的值是不可以修改的,避免了误操作
+//}
+//int main()
+//{
+//	student stu1 = { "小学生",18,100 };
+//	cout << "学生的名字为："<< stu1.name <<" 学生的年龄为："<< stu1.age <<  endl;
+//	//当想使用成员列表内的内容 可以用  名字.成员列表
+//	student* point = &stu1;
+//	cout << "学生的成绩为:" << point->score << endl;
+//	//当使用指针存储结构体的地址时，若想调出使用，应该用 -> 符号 指向所需要的成员
+//
+//	//知识点：当传递结构体时，如果采用值传递，需要重新复制一份，会很耗费内存。
+//	//所以我们应该采用地址传递。与此同时，为了避免在函数中误操作修改值，可以采用常量指针。
+//	print(&stu1);
+//	system("pause");
+//	return 0;
+//}
+
+//结构体做参数函数
+//#include <iostream>
+//using namespace std;
+//
+//struct student
+//{
+//	string name;
+//	int age;
+//	int score;
+//};
+////1.值传递
+//void print(student s)
+//{
+//	//若在此处修改形参的数值，对实参无影响。
+//	cout << "学生的姓名：" << s.name << " 学生的年龄：" << s.age << " 学生的分数：" << s.score << endl;
+//}
+////2.地址传递
+//void print1(student * p)
+//{
+//	//若在此处修改数值，寻址以后会修改实参。所以说应根据情况来选择使用。
+//	cout << "学生的姓名：" << p->name << " 学生的年龄：" << p->age << " 学生的分数：" << p->score << endl;
+//}
+//int main()
+//{
+//	student s1 = { "小李",18,100 };
+//	print(s1);//值传递打印
+//	print1(&s1);//地址传递打印
+//	system("pause");
+//	return 0;
+//}
+
+////结构体案例1 
+////总共有三个老师，每个老师带五个学生，请创建老师和学生的结构体，前者中有老师的名字和带的学生，后者中有学生名字和成绩
+////然后再创建一个数组包含这三个老师，再用函数输入老师和学生的结构体内容，最后输出学生和老师的内容。
+//#include <iostream>
+//using namespace std;
+//#include <ctime>
+////1.分别创建老师和学生的结构体，包含各自的内容
+//struct student {
+//	string name;
+//	int score;
+//};
+//struct teacher{
+//	string name;
+//	student stdarr[5];
+//};
+//
+//void give(teacher tea[], int len)//函数传入数组的地址和长度
+//{
+//	srand((unsigned int)time(NULL));
+//	string nameseed = "ABCDE";
+//	for(int i=0;i<3;i++)
+//	{
+//		tea[i].name = "Teacher_";
+//		tea[i].name += nameseed[i];
+//		for (int j = 0; j < 5; j++)
+//		{
+//			tea[i].stdarr[j].name = "Student_";
+//			tea[i].stdarr[j].name += nameseed[j];
+//			tea[i].stdarr[j].score = rand()%61+40;// 0~60 +40 =40~100
+//		}
+//	}
+//
+//}
+//void printInform(teacher tea[],int len)
+//{
+//	for(int i=0;i<len;i++)
+//	{
+//		cout << "第" << i+1 << "个老师的名字是:" << tea[i].name << endl;
+//		for(int j=0;j<5;j++)
+//		{
+//			cout << "\t他的第" << j+1 << "个学生的名字是:" << tea[i].stdarr[j].name
+//				<< "该学生的成绩是:" << tea[i].stdarr[j].score << endl;
+//		}
+//	}
+//}
+//int main()
+//{
+//	//2.创建数组存放三名老师
+//	teacher tea[3];
+//	int len = sizeof(tea) / sizeof(tea[0]);
+//	//3.通过函数给每个老师和学生赋值
+//	give(tea,len);
+//	//4.打印出老师和学生分别的数据
+//	printInform(tea,len);
+//	system("pause");
+//	return 0;
+//}
