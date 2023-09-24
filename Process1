@@ -117,3 +117,74 @@
 //	system("pause");
 //	return 0;
 //}
+
+
+//9.24日结构体练习
+//利用冒泡排序对结构体数组排序。
+#include <iostream>
+//using namespace std;
+////1.设计英雄的结构体 成员列表包括姓名年龄性别
+//struct hero
+//{
+//	string name;
+//	int age;
+//	string sex;
+//};
+//void bubble(hero harr[], int len) //参数列表有 结构体数组的地址 数组的长度
+//{
+//	for (int i = 0; i < len-1; i++)
+//	{
+//		for (int j = 0; j < len - 1 - i; j++)
+//		{
+//			if (harr[j].age > harr[j + 1].age)
+//			{
+//				////[1]名字交换
+//				//string Name = harr[j].name;
+//				//harr[j].name = harr[j + 1].name;
+//				//harr[j + 1].name = Name;
+//				////[2]年龄交换
+//				//int temp = harr[j].age;
+//				//harr[j].age = harr[j + 1].age;
+//				//harr[j + 1].age = temp;
+//				////[3]性别交换
+//				//string Sex = harr[j].sex;
+//				//harr[j].sex = harr[j + 1].sex;
+//				//harr[j + 1].sex = Sex;
+//				//【4】此处也可以一次性传导
+//				hero temp = harr[j];
+//				harr[j] = harr[j + 1];
+//				harr[j + 1] = temp;
+//			}
+//		}
+//	}
+//}
+//void printH(hero harr[], int len)
+//{
+//	for (int i = 0; i < len;i++)
+//	{
+//		cout << "\t第"<<i+1 << "个英雄的名字是：" << harr[i].name << " 年龄是：" << harr[i].age
+//			 << " 性别是：" << harr[i].sex << endl;
+//	}
+//}
+//int main()
+//{
+//	//2.创建一个数组存放五名英雄
+//	hero Harr[5] = {
+//		{"刘备",23,"男"},
+//		{"关羽",22,"男"},
+//		{"张飞",20,"男"},
+//		{"赵云",21,"男"},
+//		{"貂蝉",19,"女"}
+//	};
+//	cout << "排序前的打印结果：" << endl;
+//	int len = sizeof(Harr) / sizeof(Harr[0]);
+//	printH(Harr, len);
+//	//3.使用冒泡排序按照年龄做升序排序
+//	bubble(Harr,len);
+//	//cout << Harr[0].age << Harr[0].name << Harr[0].sex << endl;//检测一下冒泡排序的正确性
+//	//4.使用函数打印排序后的结果
+//	cout << "排序后的打印结果：" << endl;
+//	printH(Harr,len);
+//	system("pause");
+//	return 0;
+//}
