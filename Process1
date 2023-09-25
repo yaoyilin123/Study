@@ -285,3 +285,150 @@
 //	system("pause");
 //	return 0;
 //}
+
+//今日9.25学习
+//#include <iostream>
+//using namespace std;
+//
+//void print(int a, int b, int c);//函数的声明
+//
+//void print(int a, int b = 10, int c = 0)  //此处的参数值是可以设定默认值的
+//{                           //函数初始值设定有两个注意事项
+//	cout << a + b << endl; //【1】设定初始值的位置，往后都要设定初始值，不能穿插在中间
+//}							//【2】函数的声明和函数的定义不能同时在同一个参数位置上进行初始值设定
+//
+//void printA(int a, int) //此处的第二个形参并未声明名称，所以我们也不能找到他
+//{
+//	cout << a << endl;  //占位在目前用的不多。
+//}
+//void printZ(int& a)  //传入a等同于以下形式： int&a =a  
+//{
+//	cout << "这是printZ(int& a)的函数" << endl; 
+//}
+//void printZ(const int& a)  //传入10等于以下形式：  const int&a= 10； 这种形式是允许的
+////由于const int& 和int&是不同的数据类型 所以满足重载条件
+//{
+//	cout << "这是printZ(const int& a)的函数" << endl;
+//}
+//int printL(int a)
+//{
+//	return a ;
+//}
+//int printL(int a, int b = 10)
+//{
+//	return a + b;
+//}
+//
+//int main()
+//{
+//	//关于函数提高
+//	//1.函数可以有默认参数值
+///*	int a = 10;
+//	int b = 20;
+//	print(a,b);*/ //这种情况 如果传入数值，则按照传入数值运行函数，若未传，则按照默认值进行。
+//	//2.函数的占位
+//	//就像我用一个书包在图书馆的位置上占座，并未标记我的名字，但是有物品(数据类型)占领位置
+//	//printA(10,20);
+//	//3.函数的重载
+//	//3.1作用：函数之间可以共用同一个名称
+//	//         但是需要满足三个条件 【1】在同一个作用域之内
+//				// 【2】函数名称相同
+//	//			【3】传入的数据类型需要满足顺序不同、类型不同、或个数不同其中之一
+//	//  
+//	//3.2 在使用重载时需要注意的点：
+//	//【1】return 返回值的类型不同  这一点不能作为满足重载的条件
+//	//【2】在引用作为重载引用的条件时需要注意
+//	//例如：
+//	//int a = 10;
+//	//printZ(a);//正常情况下，a也是可以传入const int&的数据类型中，
+//	//printZ(10);//但是有这两种同时存在时，会进入int&a，而常量10直接进入const
+//	//【3】函数设定初始值的情况下，应该避免使用重载，避免出现二义性
+//	//例如以下
+//	//printL(10); 该代码出现错误，是因为出现了二义性，两种printL的函数均可以进入，所以出错。
+//	printL(10, 10);
+//	system("pause");
+//	return 0;
+//}
+//
+
+//////封装第一课
+////#include <iostream>
+////using namespace std;
+////
+//////创建一个圆类 
+//////封装的定义： class 类名 { 访问权限 属性 行为 };
+//// //类中的属性和行为统称为成员
+//// //属性 也叫做 成员属性 成员变量
+//// //行为 也叫做 成员函数 成员方法 (术语)
+////const double PI = 3.14;
+////class circle
+////{
+////	//公开访问
+////public: 
+////	//属性 (创建属于这类东西的特性)
+////	//比如圆类的半径
+////	int R;
+////	//行为（和这类东西的参数有关的函数）
+////	//比如计算该圆类的周长
+////	double cal()
+////	{
+////		return 2 * PI * R;
+////	}
+////};
+////int main()
+////{
+////	//利用类名创建一个该类的对象
+////	circle c1;
+////	c1.R = 5;
+////	cout << "半径为5的圆的周长为：" << c1.cal() << endl; //注意括号不要丢
+////	system("pause");
+////	return 0;
+////}
+
+////任务：设计一个学生类，属性有姓名和学号，可以给学生和学号赋值，
+////                                       可以显示学生的姓名和学号。
+//
+//#include <iostream>
+//using namespace std;
+//
+//class student
+//{
+//	//访问权限
+//public:
+//	//属性
+//	string Name;
+//	int stu_num;
+//	//行为
+//	//创建一个显示学生的姓名和学号的行为函数
+//	void printS()
+//	{
+//		cout << "学生的姓名是：" << Name << " 学号是：" << stu_num << endl;;	
+//	}
+//	void setName(string name)
+//	{
+//		Name = name;
+//	}
+//	void setNum(int num)
+//	{
+//		stu_num = num;
+//	}
+//};
+//
+//int main() {
+//	//给学生的参数赋值
+//	student s1;//实例化对象
+//	//s1.Name = "xiaoXuesheng";
+//	//s1.stu_num = 20190724; //给属性赋值
+//	s1.setName("xiaoxuesheng");
+//	s1.setNum(20190724);
+//	s1.printS();
+//	student s2;
+//	//s2.Name = "王JY";
+//	//s2.stu_num = 20190811;
+//	s2.setName("王JY");
+//	s2.setNum(20190811);
+//	s2.printS();
+//
+//	system("pause");
+//	return 0;
+//}
