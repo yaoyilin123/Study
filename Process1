@@ -574,3 +574,111 @@ int main()
 //	system("pause");
 //	return 0;
 //}
+
+
+//案例练习：判断点和圆的关系
+//#include <iostream>
+//using namespace std;
+//#include "circle.h"
+//#include "point1.h"
+////创建一个圆类
+////class circle
+////{
+////public:
+////	//设置圆的横坐标
+////	void setRx(int x)
+////	{
+////		Rx = x;
+////	}
+////	//获取圆的横坐标
+////	int getRx()
+////	{
+////		return Rx;
+////	}
+////	//设置圆的纵坐标
+////	void setRy(int y)
+////	{
+////		Ry = y;
+////	}
+////	//获取圆的纵坐标
+////	int getRy()
+////	{
+////		return Ry;
+////	}
+////	//设置圆的半径
+////	void setR(int r)
+////	{
+////		R = r;
+////	}
+////	//获取圆的半径
+////	int getR()
+////	{
+////		return R;
+////	}
+////
+////private:
+////	int Rx;//圆心坐标
+////	int Ry;
+////	int R;//圆的半径
+////};
+////创建一个点类
+////class point1 {
+////public:
+////	//设置横坐标
+////	void setX(int x)
+////	{
+////		X = x;
+////	}
+////	//获取横坐标
+////	int getX()
+////	{
+////		return X;
+////	}
+////	//设置纵坐标
+////	void setY(int y)
+////	{
+////		Y = y;
+////	}
+////	//获取纵坐标
+////	int getY()
+////	{
+////		return Y;
+////	}
+////private:
+////	int X;//设置横纵坐标
+////	int Y;
+////};
+//
+////创建一个函数判断点是否在圆内
+//void judge(circle & c,point1 & p) //将待判断的点传入
+//{
+//	unsigned int distance =((c.getRx() - p.getX())* (c.getRx() - p.getX()) + (c.getRy() - p.getY())* (c.getRy() - p.getY()));
+//	int Rdistance = (c.getR()* c.getR());
+//	if (distance> Rdistance)//外部点减去内部点的平方加在一起 和半径的平方相比较
+//	{
+//		cout << "点在圆外" << endl;
+//	}
+//	else if (distance < Rdistance)
+//	{
+//		cout << "点在圆内" << endl;
+//	}
+//	else
+//	{
+//		cout << "点在圆上" << endl;
+//	}
+//}
+//
+//int main()
+//{
+//	point1 p1; //实例化一个点
+//	p1.setX(0); 
+//	p1.setY(21);
+//	circle c1;//实例化一个圆
+//	c1.setRx(0);
+//	c1.setRy(0);
+//	c1.setR(20);
+//	judge(c1,p1);
+//	system("pause");
+//	return 0;
+//}
+////学习分文件编写
