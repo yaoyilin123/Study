@@ -475,3 +475,102 @@ int main()
 	system("pause");
 	return 0;
 }
+
+////9.28日练习案例1
+////设计一个立方体类（Cube），求出立方体的面积和体积。
+////分别用全局函数和成员函数来判断两个立方体是否相等（相等即长宽高均相同）
+//#include <iostream>
+//using namespace std;
+////1.设计一个立方体类
+//class Cube
+//{
+//public:
+//	//设置长
+//	void setL(float l)
+//	{
+//		m_L = l;
+//	}
+//	//读取长
+//	float getL()
+//	{
+//		return m_L;
+//	}
+//	//设置高
+//	void setH(float h)
+//	{
+//		m_H = h;
+//	}
+//	//读取高
+//	float getH()
+//	{
+//		return m_H;
+//	}
+//	//设置宽
+//	void setW(float w)
+//	{
+//		m_W = w;
+//	}
+//	//读取宽
+//	float getW()
+//	{
+//		return m_W;
+//	}
+//
+//	float getMJ()//获得面积的成员函数
+//	{
+//		return ((m_L * m_W + m_L * m_H+ m_H*m_W) * 2);
+//}
+//	float getTJ()//获得体积的成员函数
+//	{
+//		return (m_L * m_W * m_H);
+//	}
+//
+//	//3.利用成员函数来判断两个立方体是否相等。
+//	void isSame(Cube& c)//引用传入节省空间
+//	{
+//		if (m_L == c.getL() && m_H == c.getH() && m_W == c.getW())
+//		{
+//			cout << "这两个立方体相等" << endl;
+//		}
+//		else{
+//			cout << "这两个立方体不相等！" << endl;
+//		}
+//	}
+//private:
+//	float m_L;//设置长宽高
+//	float m_W;
+//	float m_H;
+//};
+//
+////2.利用全局函数来判断两个立方体是否相等
+//void Judge(Cube &c1, Cube &c2)  //引用传入 省空间
+//{
+//	if (c1.getL() == c2.getL() && c1.getH() == c2.getH() && c1.getW() == c2.getW())
+//	{
+//				cout << "c1和c2是两个相等的立方体" << endl;
+//	}
+//	else{
+//		cout << "c1和c2是两个不相等的立方体" << endl;
+//	}
+//}
+//
+//int main()
+//{
+//	Cube c1;
+//	c1.setL(10);
+//	c1.setW(10);
+//	c1.setH(10);
+//	//cout << "c1的面积是"<<c1.getMJ() << endl;;
+//	//cout << "c1的体积是" << c1.getTJ() << endl;
+//	Cube c2;
+//	c2.setL(10);
+//	c2.setW(10);
+//	c2.setH(10);
+//	cout << "全局函数判断: ";
+//	Judge(c1, c2);//全局函数判断
+//	cout << "成员函数判断: ";
+//	c1.isSame(c2);//类成员函数判断
+//
+//	system("pause");
+//	return 0;
+//}
