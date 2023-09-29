@@ -737,3 +737,92 @@ int main()
 //	system("pause");
 //	return 0;
 //}
+
+//9.29日学习
+#include<iostream>
+using namespace std;
+//1.构造函数的分类
+//按照参数分：无参（默认）构造函数
+//			  有参构造函数
+//按照类型分：普通构造函数（除了拷贝，所有都是普通）
+//			  拷贝构造函数（顾名思义，就是拷贝一份相同的数据给别人）
+
+class person {
+
+public:
+	person()
+	{
+		cout << "person 无参函数的调用" << endl;
+	}
+	person(int a)
+	{
+		cout << "person 有参函数的调用" << endl;
+	}
+	person(const person& p)//为了防止更改原参数（本体），采用const定义
+	{
+		cout << "person 拷贝函数的调用" << endl;
+	}
+
+	~person()
+	{
+		cout << "person 析构函数的调用" << endl;
+	}
+};
+
+void test01()
+{
+	person p1;//无参函数的调用
+
+}
+
+void test02(person p)
+{
+}
+
+person test03()
+{
+	person p1;//此种情况在函数执行结束以后就会回收该对象，所以说返回值并非此对象
+	return p1;//系统会拷贝一份相同的实例化对象，来作为返回值
+}
+
+int main()
+{
+	/*test01();*/
+
+	//2.构造函数的调用
+	//函数的调用分为三种
+	//【1】括号法 例下：
+	//person p2(10);//有参函数的调用
+	//person p3(p2); //拷贝函数的调用
+	//注意事项：括号内不要什么都不装 例如person p4（）
+	/*person p4();*///系统会认为这是函数的声明 并不会实例化类的对象
+	//类比： void calculate (); 函数的声明
+	//【2】显示法
+	//person p5; //无参函数的调用
+	//person p6 = person(10);//有参函数的调用  这种情况就相当于将匿名对象直接给予了一个名字 p6
+	////在此处 person（10）是一个匿名对象 没有名称 语句执行以后会直接销毁
+	////例如：
+	//person(10);
+	//person p7 = person(p5);//拷贝函数的调用 （）内放置一个已存的实例化对象
+	//注意事项：不要用拷贝构造函数去生成匿名对象
+	//例如：
+	//person(p7);//系统会将该语句等效为 person p7; 所以会相当于重定义了。
+	//【3】隐式转换法
+	//例如
+	//person p8 = 10; //等效于 person p8=person（10）
+	//person p9 = p8;//等效于person p9=person （p8）
+
+	//3.拷贝函数的调用时机
+	//【1】当需要对对象拷贝一份相同的值时
+	//person p01;
+	//person p02(p01);
+	//【2】值传递的函数传参时
+	//person p3;
+	//test02(p3);
+	//当采用值传递的时候，系统会复制一份相同的传入形参，此种情况正好是拷贝构造函数
+	//【3】在函数中，类实例化对象作为返回值时
+/*	person p4 = test03();*///在vs2022中可能已经优化，调试后并没有拷贝构造的反应。
+
+	system("pause");
+	return 0;
+}
