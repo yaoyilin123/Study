@@ -826,3 +826,213 @@ int main()
 	system("pause");
 	return 0;
 }
+
+
+//今日9.30
+//
+//#include <iostream>
+//using namespace std;
+////今日1.构造函数的调用规则
+////编译器会自动创建至少三种函数
+////其中【1】默认构造函数
+////【2】析构函数(无参)
+////【3】拷贝构造函数
+////注意事项
+////【1】当自定义有参函数时，编译器会设置好拷贝构造函数，但是无参构造函数需要自定义
+////【2】当自定义了拷贝构造函数时，编译器就什么也不提供给，有参和无参均要自定义
+//
+////今日2.深拷贝和浅拷贝
+////浅拷贝就是只拷贝一份相同的数据，编译器默认的拷贝构造就是如此。
+////深拷贝是当在堆区申请内存时，他在堆区重新申请一块区域进行存储。
+//
+//class person
+//{
+//public:
+//	person()
+//	{
+//		height=new int(10);
+//		cout << "person 无参构造函数的调用" << endl;
+//	}
+//	person(int a)
+//	{
+//		cout << "person 有参构造函数的调用" << endl;
+//	}
+//	person(const person &p)
+//	{
+//		cout << "person 拷贝构造函数的调用" << endl;
+//		age = p.age;
+//	}
+//	~person()
+//	{
+//		cout << "person 析构函数的调用" << endl;
+//	}
+//	int age;
+//	int* height;
+//};
+//void test01()
+//{
+//	//person p(1);//如果自己没有编辑有参构造函数的话，语句是不能执行的。
+//	person p;
+//	p.age = 10;
+//	person p1(p);
+//	cout << p1.age << endl;//自己没有设定拷贝构造函数，编译器会自己设置一份拷贝数据的函数
+//} //如果自己设计了拷贝构造函数，但是没有在里面拷贝数据的话，是不会有数据传输的现象的。
+//void test02()
+//{
+//	person p2;
+//	p2.age = 18;
+//	person p3(p2);
+//	cout << p2.age << endl;
+//	cout << *p2.height << endl;
+//	cout << p3.age << endl;
+//	//cout << *p3.height << endl;这样写是不允许的，此时只是复制了表面
+//	//cout<<p3.height 发现此地址是0000  是null 并没有拷贝。
+//}
+//
+//int main()
+//{
+//	//test01();
+//	test02();
+//	system("pause");
+//	return 0;
+//}
+
+////今日3.初始化列表
+//#include<iostream>
+//using namespace std;
+//class person
+//{
+//public:
+//	person()
+//	{
+//		age = 0;
+//		height = 0;
+//	}
+//	//person(int a, int b) //这是典型的初始化,直接传入值赋值
+//	//{
+//	//	age = a;
+//	//	height = b;
+//	//}
+//	//采用初始化列表     
+//	person(int a, int b):age(a),height(b)  //注意格式 在括号后加冒号，然后对变量（赋值），变量中间用逗号隔开
+//	{
+//		cout << "person 有参函数的调用" << endl;
+//	}
+//	int age;
+//	int height;
+//};
+//
+////今日4.类可以作为其他类的成员
+//class phone
+//{
+//public:
+//	phone(string name)
+//	{
+//		cout << "phone 构造函数的调用" << endl;
+//		Pname = name;
+//	}
+//	~phone()
+//	{
+//		cout << "phone析构函数的调用" << endl;
+//	}
+//	string Pname;
+//};
+//class people
+//{
+//public:
+//	people(string Name,string Pname):name(Name),pname(Pname)
+//	{
+//		cout << "people构造函数的调用" << endl;
+//	}
+//	~people()
+//	{
+//		cout << "people析构函数的调用" << endl;
+//	}
+//	string name;
+//	phone pname;//类内可以有其他的类
+//};
+//
+//void test01()
+//{
+//	people pe("王JY","苹果800pro max");
+//	/*pe.name = "小学生";*/
+//	//pe.Pname = "iPhone 200promax";//这样不能输入
+//	cout << pe.name << "拿着" << pe.pname.Pname << endl;
+//}
+//int main()
+//{
+//	//person p(18,120);
+//	//cout << p.age << endl << p.height << endl;
+//	test01();
+//	//****通过调用函数的结果可以看出来****
+//	//在类中夹杂着子类时，创建类的变量时，系统先创造出子类，再产生类
+//	//而在析构时，由于都是存储在栈区，而栈区是先入后出，所以先回收类，再回收子类。
+//
+//	system("pause");
+//	return 0;
+//}
+////今日5.静态成员变量
+//#include <iostream>
+//using namespace std;
+//
+//class person
+//{
+//public://静态变量也有访问权限，只有在公共区域时，外部才能访问到。
+//	
+//	static int age;//静态变量只需要在前面加一个static
+//	//静态成员变量的特性：
+//	//【1】变量是在类内声明，类外初始化，且必须初始化，不然不能调用
+//	//【2】在编译阶段就在全局区申请空间
+//	//【3】所有实例化对象都共用同一个内容，一改全改。
+//	//静态成员变量的调用：
+//	//【1】通过实例化对象
+//	//【2】通过类名
+//	int height;
+//	static void func() //静态成员函数亦同，在前面加了个static
+//	{
+//		age = 200;
+//		//height = 10;此成员应该是每个对象所对应的独特信息，不能用在静态函数中
+//		cout << "静态成员函数的调用" << endl;
+//	}
+//	//静态成员函数的特性：
+//	//【1】所有对象共享一个函数
+//	//【2】内部只能使用静态成员变量
+//};
+//int person::age = 18;//初始化时不需要加static  但是需要表明是谁的变量。
+////表明时，运用如上表达。
+//
+//void test01()
+//{
+//	////【1】通过对象名来调用
+//	//person p;//实例化一个对象
+//	//cout << p.age << endl;//通过对象名来调用
+//	////【2】通过类名调用
+//	//cout<<person::age<<endl;
+//}
+//void test02()
+//{
+//	person p;
+//	cout << p.age << endl;
+//	p.age = 100;
+//	person p1;
+//	cout << p1.age << endl;//静态成员变量 一改全改。
+//
+//}
+//void test03()
+//{
+//	person p2;
+//	//静态成员函数的调用有两种
+//	//【1】通过成员对象
+//	p2.func();
+//	//【2】通过类名
+//	person::func();
+//	cout << p2.age << endl;
+//}
+//int main()
+//{
+//	//test01();
+//	//test02();
+//	test03();
+//	system("pause");
+//	return 0;
+//}
