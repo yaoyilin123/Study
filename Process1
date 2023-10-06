@@ -1036,3 +1036,122 @@ int main()
 //	system("pause");
 //	return 0;
 //}
+
+
+////10.6日学习  C++对象模型和this指针
+////今日1.类内成员函数和成员变量分开存储
+//#include <iostream>
+//using namespace std;
+//class person {}; //空对象
+//
+//void test01()
+//{
+//	person p;
+//	cout << "空对象person的内存大小:" << sizeof(p) << endl;//空对象的内存是1
+//	//这是为了区分空对象在内存中占的位置，每个空对象都一个独一无二的地址来存放
+//}
+//class student {
+//public:
+//	void func()
+//	{
+//	}
+//	int m_Age;
+//};
+//void test02()
+//{
+//	student stu;
+//	cout << "对象student的内存大小:" << sizeof(stu) << endl;
+//	//student 内部有一个int类型 占四个字节，这样整体就占四个字节。
+//	//所以成员变量是属于类的对象的。
+//	//即使有成员函数，大小仍然是4，说明成员函数并不属于类的对象。
+//	//静态的成员函数和变量均不属于类的对象，是公用的。
+//}
+////今日2.this指针 指向的是被调用成员函数所属的对象
+////作用【1】解决形参和类内成员对象的名称冲突。
+//class people {
+//public:
+//	people(int age)
+//	{
+//		//age = age; //此时age均为形参，无法正确执行
+//		this->age = age;//该形式是正确的 
+//	}
+//	people& ageaddage(people &p)//此处注意 返回值应当使用引用，若使用people，则会创建
+//		//一个新的复制品，则不能修改本体。输出就会错误。
+//	{
+//		age += p.age;
+//		return *this;
+//	}
+//	void func()
+//	{
+//		cout << "people的func函数调用" << endl;
+//	}
+//	void changeage()
+//	{
+//		this->age += 10;
+//
+//	}
+//	int age;
+//};
+//void test03()
+//{
+//	people p1(18);
+//	cout << "people的年龄为：" << p1.age << endl;
+//	//this指针在p1内部调用，所以此时this存放的地址是p1的地址。
+//}
+////作用【2】返回类本身的时候 采用return *this
+//
+//void test04()  //创建一个函数用来叠加年龄，也就是p3吸收p2的年龄，然后输出
+//{
+//	people p2(10);
+//	people p3(10);
+//	//p3.ageaddage(p2);
+//	//如果我想链式的叠加，应该让p3.ageaddage（）返回到p3，然后再继续吸收
+//	p3.ageaddage(p2).ageaddage(p2).ageaddage(p2);
+//	cout << "p3的年龄是" << p3.age << endl;
+//	
+//}
+//
+////今日3.空指针调用成员函数
+//
+//void test05()
+//{
+//	people* p4 = NULL;//创建一个空指针
+//	//p4->changeage();this是空指针，是不可以这样调用的，修改成员变量时，this需要向函数调用的对象
+//	p4->func();
+//
+//}
+//
+////今日4.const修饰成员函数 写法：在函数名字后侧加const
+////this指针的本质是指针常量，指向是不能改的，指向对象的数值可以修改。
+////teacher（ID） * const this
+//class teacher {
+//public:
+//	void func()const
+//	{
+//	//age = 10; 加了const的函数，此时内部的变量是不能修改的。
+//	num = 10;//如果想在const修饰的成员函数内部修改值的话需要在设定成员函数之前标记mutable
+//	}
+//	void func2NOconst(){} //成员函数，不加const
+//
+//	int age;
+//	mutable int num;//特殊变量，需要修改
+//	//如果想在const修饰的成员函数内部修改值的话需要在设定成员函数之前标记mutable
+//};
+//
+//void test06()
+//{
+//	const teacher tea;
+//	tea.func();
+//	//tea.func2NOconst();这样是错误的，因为常函数只能调用常变量
+//}
+//int main()
+//{
+//	//test01();
+//	//test02();
+//	//test03();
+//	//test04();
+//	//test05();
+//	test06();
+//	system("pause");
+//	return 0;
+//}
