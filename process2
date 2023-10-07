@@ -1,1 +1,176 @@
+//今日23.10.7
+////10.7日学习 C++友元 关键字：friend
+////类有私人权限，在类外不能访问，但是如果我想访问的话，就可以利用友元。
+////友元的作用：帮助外部的函数或者类来访问一个类私有权限的部分。
+//#include <iostream>
+//using namespace std;
+//
+//class building
+//{
+//	friend void test01();
+//public:
+//	building()
+//	{
+//		sittingRoom = "客厅";
+//		Bedroom = "卧室";
+//	}
+//	string sittingRoom;//客厅，公共权限可以访问
+//private:
+//	string Bedroom;//卧室，私有权限
+//};
+//class GoodGay
+//{
+//public:
+//	GoodGay()
+//	{
+//		build = new building;//构造函数在堆区创建一个区域存放building类，将地址返回给build
+//	}
+//
+//	building * build;
+//};
+//
+////1.全局函数做友元
+////格式： 需要在类内最上端声明函数的名称，并带上关键字friend
+//void test01()
+//{
+//	GoodGay gg;
+//	cout << "test01此时访问的是：" << gg.build->sittingRoom << endl;//sittingroom是公共区域可以访问
+//	cout << "test01此时访问的是：" << gg.build->Bedroom << endl;//私有权限不可访问
+//	//加上友元的声明即可访问
+//}
+//
+//int main()
+//{
+//	test01();
+//	system("pause");
+//	return 0;
+//}
 
+////今日2.全局函数做友元
+//#include <iostream>
+//using namespace std;
+//class building
+//{
+//	friend class GoodGay;
+//public:
+//	building();
+//	string sittingRoom;
+//private:
+//	string bedRoom;
+//};
+//
+//class GoodGay
+//{
+//public:
+//		GoodGay();
+//		void visit1();
+//		void visit2();
+//	    building* build;
+//};
+////类外可以声明类内的构造函数或者成员函数，两者的区别就是需要在函数前声明一个归属
+//GoodGay::GoodGay()
+//{
+//	build = new building;//在堆区创建一个空间存放building
+//}
+//
+//building::building()
+//{
+//	sittingRoom = "客厅";  
+//	bedRoom = "卧室";
+//}
+//
+//void GoodGay::visit1()
+//{
+//	cout << "visit1此时访问的是" << build->sittingRoom << endl;
+//	cout << "visit1此时访问的是" << build->bedRoom << endl;
+//
+//}
+//void GoodGay::visit2()
+//{
+//	cout << "visit2此时访问的是" << build->sittingRoom << endl;
+//	cout << "visit2此时访问的是" << build->bedRoom << endl;
+//
+//}
+//
+////我想在GoodGay类内访问building类内的私有权限部分
+////也就是利用GoodGay内的函数访问
+//void test01()
+//{
+//	GoodGay gg;
+//	gg.visit1();
+//	gg.visit2();
+//}
+////当类做友元的时候，类内所有的函数都可以访问目标类内的私有权限区域。
+//int main()
+//{
+//	test01();
+//	system("pause");
+//	return 0;
+//}
+
+//今日3.成员函数做友元
+//#include <iostream>
+//using namespace std;
+//class building;//*************【注意】*************
+////当成员函数做友元的时候，一定要把友元的类写在被访问私有权限区域的类的前面
+//// ，并且在前面声明被访问类的名称
+//class GoodGay
+//{
+//public:
+//	GoodGay();
+//	void visit1();
+//	void visit2();
+//	building* build;
+//};
+//class building//*************【注意】*************
+////当成员函数做友元的时候，一定要把友元的类写在被访问私有权限区域的类的前面
+//// ，并且在前面声明被访问类的名称  
+//{
+//	friend void GoodGay::visit1();
+//public:
+//	building();
+//	string sittingRoom;
+//private:
+//	string bedRoom;
+//};
+//
+//GoodGay::GoodGay()
+//{
+//	build = new building;//在堆区创建一个空间存放building
+//}
+//
+//building::building()
+//{
+//	sittingRoom = "客厅";
+//	bedRoom = "卧室";
+//}
+//
+//void GoodGay::visit1()
+//{
+//	cout << "visit1此时访问的是" << build->sittingRoom << endl;
+//	cout << "visit1此时访问的是" << build->bedRoom << endl;
+//
+//}
+//void GoodGay::visit2()
+//{
+//	cout << "visit2此时访问的是" << build->sittingRoom << endl;
+//	//cout << "visit2此时访问的是" << build->bedRoom << endl;
+//
+//}
+//
+//
+//void test01()
+//{
+//	GoodGay gg;
+//	gg.visit1();
+//	gg.visit2();
+//}
+////*************【注意】*************
+////当成员函数做友元的时候，一定要把友元的类写在被访问私有权限区域的类的前面
+//// ，并且在前面声明被访问类的名称
+//int main()
+//{
+//	test01();
+//	system("pause");
+//	return 0;
+//}
