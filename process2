@@ -174,3 +174,116 @@
 //	system("pause");
 //	return 0;
 //}
+
+
+////10.8日学习 运算重载符
+////运算重载符的作用：编译器不能识别自定义的数据类型之间的相加
+////此时我们可以通过成员函数或者全局函数来赋予这些操作
+//#include <iostream>
+//using namespace std;
+//
+//class person
+//{
+//public:
+//	person(int a,int b):m_A(a),m_B(b)
+//	{}
+////今日1.利用成员函数进行重载加号
+//	//person operator+(person &p) 
+// // //operator+ 系统赋予的通用名称，这样不用再输入函数名称，直接使用加号即可。
+//	//{
+//	//	person temp(0,0);
+//	//	temp.m_A = this->m_A + p.m_A;
+//	//	temp.m_B = this->m_B + p.m_B;
+//	//	return temp;//直接值传递返回，编译器会拷贝一份相同的。
+//	//}
+//	int m_A;
+//	int m_B;
+//};
+//
+////今日2.利用全局函数进行重载加号
+//person operator+(person& p1, person& p2) //两者区别不大。
+//{
+//	person temp(0,0);
+//	temp.m_A = p1.m_A + p2.m_A;
+//	temp.m_B = p1.m_B + p2.m_B;
+//	return temp;
+//}
+//
+////今日3.不同数据类型之间的相加函数
+//person operator+(person& p1, int num) //运算符重载也可以发生函数重载
+////此处形参内部传入的是不同类型，和上面的不同。
+//{
+//	person temp(0, 0);
+//	temp.m_A = p1.m_A + num;
+//	temp.m_B = p1.m_B + num;
+//	return temp;
+//}
+//
+//
+////我想做的是：可以实现person间的相加，使p1和p2的各个参数进行相加赋值给p3
+//void test01()
+//{
+//	person p1(10,20);
+//	person p2(10,20);
+//	person p3 = p1 + p2;  //这是我想实现的步骤，但是此时显示没有符合要求的运算符
+//	//operator+ 系统赋予的通用名称，这样不用再输入函数名称，直接使用加号即可。
+//	//【1】成员函数的本质
+//	/*person p3 =p1.operator+(p2);*/
+//	//【2】全局函数的本质
+//	//person p3 = operator+(p1, p2);
+//
+//	cout << "p3.m_A的值是" << p3.m_A<<  endl;
+//	cout << "p3.m_B的值是" << p3.m_B << endl;
+//	//运算符重载也可以允许函数重载
+//	//比如我想让person和int类型相加
+//	person p4 = p1 + 100;
+//	cout << "p4.m_A的值是" << p4.m_A << endl;
+//	cout << "p4.m_B的值是" << p4.m_B << endl;
+//}
+//int main()
+//{
+//	test01();
+//	//总结【1】 对于内置的数据类型是无法更改的
+//	
+//	//总结【2】 不要滥用运算符重载
+//
+//	system("pause");
+//	return 0;
+//}
+
+////今日4.左移运算符重载
+////左移运算符重载只能用全局函数，局部函数不能让cout在<<的前侧
+//#include <iostream>
+//using namespace std;
+//
+//class person
+//{
+//	friend ostream& operator<<(ostream& cout, person& p);
+//public:
+//	person(int a, int b):m_A(a),m_B(b)
+//	{}
+//private:
+//	int m_A;
+//	int m_B;
+//};
+//
+//ostream& operator<<(ostream &cout,person &p) //cout在整个系统中只有一个所以只能使用引用
+//{
+//	cout << "p.m_A =" << p.m_A << endl;
+//	cout << "p.m_B =" << p.m_B << endl;
+//	return cout;
+//}
+////该全局函数的本质是： operator<<(cout,p); 
+////格式简化以后成了 cout << p ，打出这个指令后就会执行函数中的内容
+//void test01()//我想做的是cout<<p直接能输出对象p下的所有元素
+//{
+//	person p(10, 20);
+//	cout << p << endl ;//例如此步骤
+//	//为了使用链式表达法，应该让cout<<p 返回到cout的形式 这样又能跟后面<<___ 进行配对
+//}
+//int main()
+//{
+//	test01();
+//	system("pause");
+//	return 0;
+//}
