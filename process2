@@ -287,3 +287,184 @@
 //	system("pause");
 //	return 0;
 //}
+
+
+//10.11日学习
+////今日1. 递增运算符重载
+//#include <iostream>
+//using namespace std;
+////当两个自定义类型++或者--时，系统内置没有可应用的运算符，所以自己设置
+//class Person
+//{
+//	friend ostream& operator<< (ostream &cout, Person& p);
+//public:
+//	Person(int age) :m_age(age) 
+//	{}
+//	Person& operator++()//前置++
+//	{
+//		m_age++;
+//		return *this; //前置++返回类引用
+//	}
+//	int operator++(int)//后置++ 采用占位符与系统区分
+//	{
+//		//后置++应该利用临时值保存数值，然后本值递增，再返回递增前保存的临时数值
+//		Person temp = *this;
+//		m_age++;
+//		return temp.m_age;  //后置++返回数值
+//	}
+//private:
+//	int m_age;
+//};
+//
+//ostream & operator<< (ostream &cout,Person &p)//函数用于直接输出类的成员
+//{
+//	cout << p.m_age ;
+//	return cout;
+//}
+//
+//void test01()
+//{
+//	Person p(18);
+//	cout << "p 的数值是" << ++p << endl;
+//	cout << "p 的数值是" <<  p  << endl;
+//}
+//
+//void test02()
+//{
+//	Person p1(20);
+//	cout << "p1 的数值是" << p1++ << endl;
+//	cout << "p1 的数值是" << p1++ << endl;
+//	cout << "p1 的数值是" << p1 << endl;
+//
+//}
+//int main()
+//{
+//	//test01();
+//	test02();
+//	system("pause");
+//	return 0;
+//}
+////递减运算符重载同理
+
+////今日2. 赋值运算符重载
+//#include <iostream>
+//using namespace std;
+//class person
+//{
+//	friend ostream& operator<<(ostream &cout, person& p);
+//public:
+//	person(int age):m_Age(age)
+//	{	}
+//	person& operator=(person &p)
+//	{
+//		m_Age = p.m_Age;
+//		return *this; 
+//	}
+//private:
+//	int m_Age;
+//};
+//
+//ostream& operator<<(ostream &cout, person& p)
+//{
+//	cout << p.m_Age;
+//	return cout;
+//}
+//void test01()
+//{
+//	person p1(18);
+//	person p2(20);
+//	person p3(30);
+//	p1 = p2 = p3;//当连续进行赋值时，这就要求开始的赋值结果要返回出一个数值，以便后续赋值
+//	//p1= ______(p2=p3 返回值)
+//	cout << "p1 的年龄为："<< p1 << endl;
+//}
+//int main()
+//{
+//	test01();
+//
+//	system("pause");
+//	return 0;
+//}
+
+////关系运算符重载 == !=
+//#include <iostream>
+//using namespace std;
+//
+//class person
+//{
+//	
+//public:
+//	person(string name,int age) :m_Name(name),m_Age(age)
+//	{ }
+//
+//	bool operator==(person &p)
+//	{
+//		if (this->m_Age == p.m_Age && this->m_Name == p.m_Name)
+//		{
+//			return true;
+//		}
+//		else
+//		{
+//			return false;
+//		}
+//	}
+//	bool operator!=(person &p)
+//	{
+//		if (this->m_Age == p.m_Age && this->m_Name == p.m_Name)
+//		{
+//			return false;
+//		}
+//		else
+//		{
+//			return true;
+//		}
+//	}
+//private:
+//	string m_Name;
+//	int m_Age;
+//};
+//
+//void test01()
+//{
+//	person p1("xxs", 18);
+//	person p2("王JY", 18);
+//	person p3("xxs", 18);
+//
+//	if (p1 == p2)
+//	{
+//		cout << "p1 和 p2 是一样的" << endl;
+//	}
+//	else
+//	{
+//		cout << "p1 和 p2 是不一样的" << endl;
+//	}
+//	if (p1 == p3)
+//	{
+//		cout << "p1 和 p3 是一样的" << endl;
+//	}
+//	else
+//	{
+//		cout << "p1 和 p3 是不一样的" << endl;
+//	}
+//}
+//
+//void test02()
+//{
+//	person  p4("周YF",99);
+//	person  p5("邳州王老丁", 98);
+//	if (p4 != p5)
+//	{
+//		cout << "p4 和 p5 是不一样的" << endl;
+//	}
+//	else
+//	{
+//		cout << "p4 和 p5 是一样的" << endl;
+//	}
+//}
+//int main()
+//{
+//	//test01();
+//	test02();
+//	system("pause");
+//	return 0;
+//}
